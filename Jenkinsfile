@@ -32,6 +32,17 @@ pipeline {
                 bat 'mvn test'
             }
         }
+        stage('Docker Build') {
+    steps {
+        bat 'docker build -t blazedemo-automation .'
+    }
+}
+
+stage('Docker Run') {
+    steps {
+        bat 'docker run --rm blazedemo-automation'
+    }
+}
     }
 
     post {
